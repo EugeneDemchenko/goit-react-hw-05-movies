@@ -1,0 +1,15 @@
+.header {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(65, 70, 90);
+}
+.link {
+    color: bisque;
+    margin: 10px;
+    font-size: 30px;
+}
+:hover,
+:focus,
+:active {
+    color: red;
+}
