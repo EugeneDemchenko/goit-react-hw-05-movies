@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import {  NavLink, Outlet } from 'react-router-dom'
 import './Header.css'
 
 export default class Header extends Component {
     render() {
         return (<>
             <header className="header">
-                <Link className='link'>Home</Link>
-                <Link className='link'>Movie</Link>
+                <NavLink style={({isActive}) => ({color: isActive ? 'red' : 'bisque'})} to='/' className='link'>Home</NavLink>
+                <NavLink style={({isActive}) => ({color: isActive ? 'red' : 'bisque'})} to='/movies' className='link'>Movies</NavLink>
             </header>
+            <Outlet/>
             </>
         )
     }

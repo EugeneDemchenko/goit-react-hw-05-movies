@@ -13,7 +13,7 @@ export function GetTrending() {
 export function SearchMovies(query) {
   return axios
     .get(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=uk&query=${query}`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${query}`
     )
     .then(response => {
       return response.data.results;
@@ -21,7 +21,7 @@ export function SearchMovies(query) {
 }
 export function GetMovieDetails(movieId) {
   return axios
-    .get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=uk`)
+    .get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en-US`)
     .then(response => {
       return response.data;
     });
@@ -29,7 +29,7 @@ export function GetMovieDetails(movieId) {
 export function GetMovieCredits(movieId) {
   return axios
     .get(
-      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=uk`
+      `${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
     )
     .then(response => {
       return response.data.cast;
@@ -38,7 +38,7 @@ export function GetMovieCredits(movieId) {
 export function GetMovieReviews(movieId) {
   return axios
     .get(
-        `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=uk&page=1`
+        `${BASE_URL}/movie/${movieId}/reviews?api_key=${API_KEY}&language=en-US&page=1`
     )
     .then(response => {
       return response.data.results;
