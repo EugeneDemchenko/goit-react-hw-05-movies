@@ -1,49 +1,60 @@
 import  { useState, useEffect } from "react";
 import { BsSearch } from 'react-icons/bs';
 import { SearchMovies } from "../../APIMovie";
-import { Link } from "react-router-dom";
-// import PropTypes from 'prop-types'
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+
 import './Movies.css'
 
 export default function Movies() {
+    const location = useLocation()
+    const [input, setInput] = useState()
+    const [search, setSearch] = useSearchParams()
+    const query = search.get('query')
+    const [found, setFound] = useState([])
     
-    const [searchQuery, setSearchQuery] = useState('')
+    useEffect(() => {
+        query && SearchMovies(query).then(data => setFound(data));
+        }, [query]);
 
     const handleSearchChange = e => {
-        setSearchQuery(e.currentTarget.value.toLowerCase().trim() )
+        setInput(e.currentTarget.value.toLowerCase() )
     }    
 
     const handleSubmit = e => {
         e.preventDefault();
-        if (searchQuery.trim() === '') {
+        if (input.trim() === '') {
             alert('Empty field')
             return
         }
-        setSearchQuery('')
+        setSearch({ query: input })
+        setInput('')
     }
-    // useEffect(() => {
-    //     GetSearchMovies(query).then(data => setSearch(data));
-    //     }, [query]);
 
-    return (
+    
+    return (<>
         <div className="searchbar">
             <form className="form" onSubmit={handleSubmit}>
                 <button type="submit" className="searchButton">
                     <BsSearch style={{ height: 20, width: 20, fill: 'red'}} />
                 </button>
-
                 <input
                     className="input"
                     type="text"
                     placeholder="Search movie"
-                    value = {searchQuery}
                     onChange={handleSearchChange}
+                    value = {input}
                 />
             </form>
         </div>
+        <div>
+            <ul>
+                {found.map(({id, title,}) => (
+                    <li key={id}>
+                        <Link to={`/movies/${id}`} state={location}>{title}</Link>
+                    </li>
+            ))}
+            </ul>
+        </div>
+        </>
     )
 }
-
-// Searchbar.propTypes = {
-//     submit: PropTypes.func.isRequired
-// }

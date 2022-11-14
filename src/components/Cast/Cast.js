@@ -1,6 +1,5 @@
 import { GetMovieCredits } from "../APIMovie";
 import { useState, useEffect  } from "react";
-// import {  Link } from 'react-router-dom'
 import { useParams} from "react-router-dom"
 
 
@@ -9,7 +8,6 @@ export function Cast () {
     const {movieId} = useParams()
     useEffect(() => { GetMovieCredits(movieId).then(data => setMovie(data))}, [movieId])
     if (!movie) return null
-    console.log(movie);
     
     return (
         <>

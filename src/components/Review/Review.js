@@ -1,6 +1,5 @@
 import { GetMovieReviews } from "../APIMovie";
 import { useState, useEffect  } from "react";
-// import {  Link } from 'react-router-dom'
 import { useParams} from "react-router-dom"
 
 
@@ -9,7 +8,6 @@ export function Review () {
     const {movieId} = useParams()
     useEffect(() => { GetMovieReviews(movieId).then(data => setMovie(data))}, [movieId])
     if (!movie) return 
-    console.log(movie);
     
     return (
         <>

@@ -6,9 +6,9 @@ const getNavLinkWithActive = ({isActive}) => ({...navLinkStyle, color: isActive 
 
 export const Nav = () => {
     return (
-              <div style={{display: 'flex', gap: '15px'}}>
-      <NavLink style={getNavLinkWithActive} to='/'>Home</NavLink>
-      <NavLink style={getNavLinkWithActive} to='/movies'>Movies</NavLink>
+      <div style={{display: 'flex', gap: '15px'}}>
+        <NavLink style={getNavLinkWithActive} to='/'>Home</NavLink>
+        <NavLink style={getNavLinkWithActive} to='/movies'>Movies</NavLink>
       </div>
     )
 }
